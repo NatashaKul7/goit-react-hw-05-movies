@@ -1,5 +1,20 @@
+import SearchForm from "components/SearchForm/SearchForm";
+import { useState, useEffect } from "react";
+
 const Movies = () => {
-  return <div>Movies page</div>;
+  const [movies, setMovies] = useState([]);
+ 
+  
+
+
+
+
+
+  return (
+    <>
+      <SearchForm/>
+  </>
+  )
 };
 
 export default Movies;

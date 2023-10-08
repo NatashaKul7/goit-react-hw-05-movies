@@ -5,7 +5,7 @@ export const HomeMovieItem = ({ id, title, poster_path }) => {
 
   return (
     <div>
-      <Link to={`/movie/${id}`}>{title}</Link>
+      <Link to={`${id}`}>{title}</Link>
       {/* <img src={ `${BASE_IMG}${poster_path}`} alt="" /> */}
     </div>
   );
