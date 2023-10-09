@@ -1,41 +1,44 @@
+import Error from 'components/Error/Error';
+import Loader from 'components/Loader/Loader';
 import MovieList from 'components/MovieList/MovieList';
-import { useState, useEffect } from 'react';
-import {useParams, useLocation, Link } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { fetchMovieDetails } from 'services/api';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState({});
   const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(false);
+
 
   const { movieId } = useParams();
-  // const location = useLocation();
-  // const backLinkHref = location.state?.from ?? "/movies";
-  // console.log(movieId)
+
+  const location = useLocation();
+  const backLinkLocationRef = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
+    setLoading(true);
     const getMovieDetails = async id => {
-      // console.log(id)
       try {
         const response = await fetchMovieDetails(id);
         setMovie(response);
-        // console.log(response);
+        setLoading(false);
       } catch (error) {
         setError(true);
+        
       }
     };
 
     getMovieDetails(movieId);
-
-    // return () => {
-    //   getMovieDetails(movieId);
-    // };
   }, [movieId]);
 
   return (
     <>
-      {/* <Link to={ backLinkHref}>Go back</Link> */}
-      <MovieList movie={movie} />
+      <Link to={backLinkLocationRef.current}>Go back</Link>
       
+      {loading ? (<Loader />)
+        : ( <MovieList movie={movie} />) }
+      { error && <Error/>}
     </>
   );
 };

@@ -1,12 +1,9 @@
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import MovieItem from './MovieItem/MovieItem';
 
 const MovieList = ({ movie }) => {
-  const location = useLocation();
   return (
     <>
-      {/* <Link to="">Go back</Link> */}
-      <Link to={`${movie}`} state={{ from: location }}/>
       <MovieItem movie={movie} />
       <ul>
         <li>

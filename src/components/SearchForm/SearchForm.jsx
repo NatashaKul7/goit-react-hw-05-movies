@@ -1,33 +1,22 @@
-import { useState } from 'react';
-
-const SearchForm = ({ onSubmit }) => {
-  const [searchQuery, setSearch] = useState('');
-
-  const onInputChange = e => {
-    setSearch(e.target.value.toLowerCase());
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-
-    if (searchQuery.trim() === '') {
-      console.log('Write your request');
-      return;
+const SearchForm = ({ handleQuery, queryParams, setPage }) => {
+  const updateQueryString = e => {
+    const movieQuery = e.target.value.toLowerCase();
+    if (movieQuery === '') {
+      return handleQuery({});
     }
-    onSubmit(searchQuery);
-    setSearch('');
+    handleQuery({ query: movieQuery });
+    setPage(1);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <>
       <input
         type="text"
-        value={searchQuery}
-        onChange={onInputChange}
+        value={queryParams}
+        onChange={updateQueryString}
         placeholder="Search a movie you want"
       />
-      <button type="submit">Search</button>
-    </form>
+    </>
   );
 };
 

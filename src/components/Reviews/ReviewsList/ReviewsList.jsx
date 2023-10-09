@@ -1,14 +1,11 @@
-import ReviewsItem from "../ReviewsItem/ReviewsItem";
+import ReviewsItem from '../ReviewsItem/ReviewsItem';
 
 const ReviewsList = ({ reviews }) => {
   return (
     <>
       {reviews &&
         reviews.map(({ author, content, id }) => {
-            return <ReviewsItem
-                key={id}
-                author={author}
-                content={content} />;
+          return <ReviewsItem key={id} author={author} content={content} />;
         })}
     </>
   );
