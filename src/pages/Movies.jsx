@@ -47,6 +47,7 @@ const Movies = () => {
     };
 
     getSearchedMovies(queryParams, page);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [queryParams, page]);
 
   const handleQuery = query => {
