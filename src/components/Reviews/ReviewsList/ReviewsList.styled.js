@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-export const StyledHomeMoviesList = styled.ul`
+export const StyledReviewsList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-top: 20px;
+  margin-top: 24px;
 `;

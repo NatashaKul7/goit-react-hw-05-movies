@@ -2,14 +2,14 @@ import Error from 'components/Error/Error';
 import Loader from 'components/Loader/Loader';
 import MovieList from 'components/MovieList/MovieList';
 import { useState, useEffect, useRef } from 'react';
-import { useParams, Link, useLocation } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { fetchMovieDetails } from 'services/api';
+import { StyledButton } from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState({});
   const [error, setError] = useState(false);
-    const [loading, setLoading] = useState(false);
-
+  const [loading, setLoading] = useState(false);
 
   const { movieId } = useParams();
 
@@ -25,7 +25,6 @@ const MovieDetails = () => {
         setLoading(false);
       } catch (error) {
         setError(true);
-        
       }
     };
 
@@ -34,11 +33,10 @@ const MovieDetails = () => {
 
   return (
     <>
-      <Link to={backLinkLocationRef.current}>Go back</Link>
-      
-      {loading ? (<Loader />)
-        : ( <MovieList movie={movie} />) }
-      { error && <Error/>}
+      <StyledButton to={backLinkLocationRef.current}>Go back</StyledButton>
+
+      {loading ? <Loader /> : <MovieList movie={movie} />}
+      {error && <Error />}
     </>
   );
 };

@@ -1,7 +1,5 @@
 const Error = () => {
-  return (
-    <><h2>Ooops...error</h2></>
-  )
-}
+  return <h2>Ooops...error</h2>;
+};
 
-export default Error
+export default Error;

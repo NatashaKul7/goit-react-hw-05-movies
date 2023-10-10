@@ -1,10 +1,11 @@
+import { StyledReviewsItem } from './ReviewsItem.styled';
+
 const ReviewsItem = ({ author, content }) => {
-  
   return (
-    <li>
+    <StyledReviewsItem>
       <h3>Author: {author}</h3>
       <p>{content}</p>
-    </li>
+    </StyledReviewsItem>
   );
 };
 

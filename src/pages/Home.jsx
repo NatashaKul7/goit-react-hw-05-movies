@@ -18,8 +18,8 @@ const Home = () => {
         setLoading(false);
       } catch (error) {
         console.log(error.message);
-        // setError(true);
-            setLoading(false);
+        setError(true);
+        setLoading(false);
       }
     };
 
@@ -29,9 +29,8 @@ const Home = () => {
   return (
     <>
       <h1>Trending today</h1>
-      {loading ? (<Loader />)
-        : ( <HomeMoviesList movies={movies} />) }
-      { error && <Error/>}
+      {loading ? <Loader /> : <HomeMoviesList movies={movies} />}
+      {error && <Error />}
     </>
   );
 };

@@ -5,7 +5,7 @@ import ReviewsList from './ReviewsList/ReviewsList';
 import Loader from 'components/Loader/Loader';
 import Error from 'components/Error/Error';
 
-export const Reviews = () => {
+const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -13,13 +13,13 @@ export const Reviews = () => {
   const { movieId } = useParams();
 
   useEffect(() => {
-       setLoading(true);
+    setLoading(true);
 
     const getReviews = async id => {
       try {
         const { results } = await fetchMovieReview(id);
         setReviews(results);
-           setLoading(false);
+        setLoading(false);
       } catch (error) {
         setError(true);
       }
@@ -29,19 +29,20 @@ export const Reviews = () => {
 
   return (
     <>
-       {loading ? (
+      {loading ? (
         <Loader />
       ) : (
         <>
           {reviews.length === 0 ? (
-        <h3>No reviews yet...</h3>
-      ) : (
-        <ReviewsList reviews={reviews} />
-      )}
+            <h3>No reviews yet...</h3>
+          ) : (
+            <ReviewsList reviews={reviews} />
+          )}
         </>
       )}
       {error && <Error />}
-      
     </>
   );
 };
+
+export default Reviews;

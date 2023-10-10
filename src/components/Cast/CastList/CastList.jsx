@@ -1,8 +1,9 @@
 import CastItem from '../CastItem/CastItem';
+import { StyledCastList } from './CastList.styled';
 
 const CastList = ({ cast }) => {
   return (
-    <>
+    <StyledCastList>
       {cast &&
         cast.map(({ id, name, character, profile_path }) => {
           return (
@@ -14,7 +15,7 @@ const CastList = ({ cast }) => {
             />
           );
         })}
-    </>
+    </StyledCastList>
   );
 };
 

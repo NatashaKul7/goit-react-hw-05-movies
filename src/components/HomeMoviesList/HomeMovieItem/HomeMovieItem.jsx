@@ -1,13 +1,16 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { StyledLink } from './HomeMovieItem.styled';
 
-export const HomeMovieItem = ({ id, title, poster_path }) => {
+export const HomeMovieItem = ({ id, title }) => {
   const location = useLocation();
 
   return (
-    <div>
-      <Link to={`${id}`} state={{ from: location }}>
-        {title}
-      </Link>
-    </div>
+    <>
+      {title && (
+        <StyledLink to={`movies/${id}`} state={{ from: location }}>
+          <h3>{title}</h3>
+        </StyledLink>
+      )}
+    </>
   );
 };

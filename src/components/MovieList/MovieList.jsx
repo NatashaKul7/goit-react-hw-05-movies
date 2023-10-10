@@ -1,5 +1,7 @@
 import { Link, Outlet } from 'react-router-dom';
 import MovieItem from './MovieItem/MovieItem';
+import { Suspense } from 'react';
+import Loader from 'components/Loader/Loader';
 
 const MovieList = ({ movie }) => {
   return (
@@ -17,7 +19,9 @@ const MovieList = ({ movie }) => {
           </Link>
         </li>
       </ul>
-      <Outlet />
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };

@@ -5,7 +5,7 @@ import CastList from './CastList/CastList';
 import Loader from 'components/Loader/Loader';
 import Error from 'components/Error/Error';
 
-export const Cast = () => {
+const Cast = () => {
   const [cast, setCast] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -39,7 +39,9 @@ export const Cast = () => {
           )}
         </>
       )}
-      { error && <Error />}
+      {error && <Error />}
     </>
   );
 };
+
+export default Cast;
